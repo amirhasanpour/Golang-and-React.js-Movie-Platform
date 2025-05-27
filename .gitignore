@@ -1,0 +1,30 @@
+# React Front-End
+
+# dependencies
+/go-movies-front-end/node_modules
+/go-movies-front-end/.pnp
+/go-movies-front-end/.pnp.js
+
+# testing
+/go-movies-front-end/coverage
+
+# production
+/go-movies-front-end/build
+
+# misc
+/go-movies-front-end/.DS_Store
+/go-movies-front-end/.env.local
+/go-movies-front-end/.env.development.local
+/go-movies-front-end/.env.test.local
+/go-movies-front-end/.env.production.local
+
+/go-movies-front-end/npm-debug.log*
+/go-movies-front-end/yarn-debug.log*
+/go-movies-front-end/yarn-error.log*
+
+# General
+
+.DS_Store
+.env
+.env.*
+*.log
