@@ -28,3 +28,6 @@
 .env
 .env.*
 *.log
+
+# Database Data
+/go-movies-back-end/postgres-data
