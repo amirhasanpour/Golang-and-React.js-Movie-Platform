@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import Alert from "./components/Alert";
 
@@ -6,6 +6,8 @@ function App() {
   const [jwtToken, setJwtToken] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
   const [alertClassName, setAlertClassName] = useState("d-none");
+
+  const [tickInterval, setTickInterval] = useState();
 
   const navigate = useNavigate();
 
@@ -21,13 +23,15 @@ function App() {
     })
     .finally(() => {
       setJwtToken("");
+      toggleRefresh(false);
     })
 
     navigate("/login");
   }
 
-  useEffect(() => {
-    if (jwtToken === "") {
+  const toggleRefresh = useCallback((status) => {
+    if (status) {
+      let i = setInterval(() => {
       const requestOptions = {
         method: "GET",
         credentials: "include",
@@ -41,10 +45,38 @@ function App() {
           }
         })
         .catch(error => {
+          console.log("user is not logged in");
+        })
+      }, 600000);
+      setTickInterval(i);
+      console.log("setting tick interval to", i);
+    } else {
+      console.log("turning off tickInterval", tickInterval);
+      setTickInterval(null);
+      clearInterval(tickInterval);
+    }
+  }, [tickInterval])
+
+  useEffect(() => {
+    if (jwtToken === "") {
+      const requestOptions = {
+        method: "GET",
+        credentials: "include",
+      }
+
+      fetch(`/refresh`, requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.access_token) {
+            setJwtToken(data.access_token);
+            toggleRefresh(true);
+          }
+        })
+        .catch(error => {
           console.log("user is not logged in", error);
         })
     }
-  }, [jwtToken])
+  }, [jwtToken, toggleRefresh])
 
   return (
     <div className="container">
@@ -81,7 +113,7 @@ function App() {
         <div className="col-md-10">
           <Alert message={alertMessage} className={alertClassName} />
           <Outlet context={{
-            jwtToken, setJwtToken, setAlertClassName, setAlertMessage,
+            jwtToken, setJwtToken, setAlertClassName, setAlertMessage, toggleRefresh,
           }}/>
         </div>
       </div>
