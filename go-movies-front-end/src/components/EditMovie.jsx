@@ -4,6 +4,7 @@ import Input from "./form/Input";
 import Select from "./form/Select";
 import TextArea from "./form/TextArea";
 import Checkbox from "./form/Checkbox";
+import Swal from 'sweetalert2'
 
 const EditMovie = () => {
     const navigate = useNavigate();
@@ -112,6 +113,16 @@ const EditMovie = () => {
             }
         })
 
+        if (movie.genres_array.length === 0) {
+            Swal.fire({
+                title: 'Error!',
+                text: 'You must choose at least on genre!',
+                icon: 'error',
+                confirmButtonText: 'OK',
+            })
+            errors.push("genres");
+        }
+
         setErrors(errors);
 
         if (errors.length > 0) {
@@ -154,7 +165,7 @@ const EditMovie = () => {
         <div>
             <h2>Add/Edit Movie</h2>
             <hr />
-            <pre>{JSON.stringify(movie, null, 3)}</pre>
+            {/* <pre>{JSON.stringify(movie, null, 3)}</pre> */}
 
             <form onSubmit={handleSubmit}>
 
