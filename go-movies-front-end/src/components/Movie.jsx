@@ -39,13 +39,13 @@ const Movie = () => {
             ))}
             <hr />
 
-            {movie.image !== "" &&
+            {/* {movie.image !== "" &&
                 <div className="mb-3">
                     <img src={`https://media-cache.cinematerial.com/p/500x${movie.image}`}
                     style={{ width: '200px', height: 'auto' }}
                     alt="poster" />
                 </div>
-            }
+            } */}
 
             <p>{movie.description}</p>
         </div>
