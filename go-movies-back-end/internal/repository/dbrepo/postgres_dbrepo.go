@@ -336,6 +336,7 @@ func (m *PostgresDBRepo) UpdateMovie(movie models.Movie) error {
 		movie.MPAARating,
 		movie.UpdatedAt,
 		movie.Image,
+		movie.ID,
 	)
 
 	if err != nil {
