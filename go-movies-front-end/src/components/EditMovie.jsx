@@ -250,7 +250,7 @@ const EditMovie = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                let headers = Headers();
+                let headers = new Headers();
                 headers.append("Authorization", "Bearer " + jwtToken);
 
                 const requestOptions = {
