@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { data, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Movie = () => {
     const [movies, setMovies] = useState([]);

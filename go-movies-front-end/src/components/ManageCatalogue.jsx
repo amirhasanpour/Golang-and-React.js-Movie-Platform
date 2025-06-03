@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { data, Link, useNavigate, useOutletContext } from "react-router-dom";
+import { Link, useNavigate, useOutletContext } from "react-router-dom";
 
 const ManageCatalogue = () => {
     const [movies, setMovies] = useState([]);
@@ -47,7 +47,7 @@ const ManageCatalogue = () => {
                     {movies.map((m) => (
                         <tr key={m.id}>
                             <td>
-                                <Link to={`/admin/movies/${m.id}`}>
+                                <Link to={`/admin/movie/${m.id}`}>
                                     {m.title}
                                 </Link>
                             </td>
