@@ -1,4 +1,17 @@
-# Golang and-React.js Movie Platform
+# Go and React.js Movie Platform
+A Single Page Application for browsing and managing movies, built with a Go back end API and a React.js front end.
+
+---
+
+## Features
+
+- **Movie browsing & details**
+- **JWT authentication (Access & Refresh tokens)**
+- **Database persistence with PostgreSQL and pgx driver**
+- **Containerized with Docker for easy setup**
+- **RESTful API powered and secured by Chi router**
+
+---
 
 ## Used Tools:
 
@@ -10,6 +23,8 @@
 - [PGX PostgreSQL driver](https://github.com/jackc/pgx)
 - [Go supplementary cryptography](https://github.com/golang/crypto)
 - [GraphQL](https://github.com/graphql-go/graphql)
+
+---
 
 ## How to run?
 
